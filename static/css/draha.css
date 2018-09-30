@@ -1,0 +1,21 @@
+#notice {
+    background: white;
+    border: solid 1pt;
+    color: black;
+    text-align: left;
+    padding-top: 10pt;
+}
+
+#message{
+    color: white;
+}
+
+.edit {
+    float: left;
+   text-align: right;
+}
+
+section .success .date {
+    padding-left: 100px;
+    float: right;
+}

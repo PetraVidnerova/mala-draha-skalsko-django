@@ -1,0 +1,19 @@
+4{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<section  id="planek" class="success">
+  <br>
+      <div class="container">
+	<div class="row">
+	  <div class="col-lg-12 text-center">
+	    <h2> Plánek </h2>
+	    <hr class="star-primary2">
+	    <p>
+	      červeně: úseky v provozu, černě: úseky plánované a ve stavbě
+	    </p>
+	    <img src="{% static 'img/planek-2013.jpg' %}" width="100%">
+	  </div>
+	</div>
+      </div>
+    </section>
+{% endblock %}

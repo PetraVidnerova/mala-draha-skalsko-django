@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<br><br>
+<section class="success">
+<h1>Nový příspěvek</h1>
+     <form method="POST" class="post-form">{% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="save btn btn-default">Ulož</button>
+     </form>
+</section>
+{% endblock%}

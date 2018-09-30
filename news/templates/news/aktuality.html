@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<br><br>
+{% if user.is_authenticated %}
+<section class="odd">
+  <div class="content">
+    <a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"> </span> Přidat nový příspěvek.</a>
+    </div>
+</section>
+{% endif %}
+
+{% for post in posts %}
+<section {% if forloop.counter|divisibleby:2 %}class="odd"{% else %}class="success"{% endif %}>
+
+  {% if post.publish == False %}
+  <div class="gray">
+  {% endif %}"
+  
+  {% if user.is_authenticated %}
+      <a class="edit" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"> </span> Editovat příspěvek.</a>
+   {% endif %}
+  
+      <div class="date"> {{ post.published_date }} ({{post.author.get_full_name}}) </div>
+      <br>
+      <h2 class="content"> <a href=""> {{ post.title }} </a> </h2>
+  <p class="content"> {{ post.text|linebreaksbr }}</p>
+
+  {% if post.publish == False %}
+  </div>
+  {% endif %}"
+
+</section>
+
+{% endfor %}
+
+
+{% endblock %}
