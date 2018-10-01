@@ -10,12 +10,3 @@
     color: white;
 }
 
-.edit {
-    float: left;
-   text-align: right;
-}
-
-section .success .date {
-    padding-left: 100px;
-    float: right;
-}

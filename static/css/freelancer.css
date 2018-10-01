@@ -82,11 +82,25 @@ hr.star-primary2:after {
 }
 
 section {
+    text-align: center;
   color: white;
 }
 section .content {
     text-align: center;
 }
+
+section .edit {
+    float: left;
+    padding-left: 50px;
+}
+
+
+section .date {
+    padding-right: 50px;
+    float: right;
+    text-align: right;
+}
+
 section .container {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -201,14 +215,20 @@ section h2 {
   font-size: 3em;
 }
 section.success {
-    background: #DEB887;
+    background: green;
     color: #2C3E50;
- # color: white;
 }
+
 section.odd {
    background: white;
    color: #2C3E50; 
 }
+
+section.gray {
+    background: #000000;
+    color: #2C3E50; 
+}
+
 
 footer a,
 footer a:hover,
