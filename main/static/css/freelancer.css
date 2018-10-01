@@ -217,12 +217,18 @@ section h2 {
 section.success {
     background: #DEB887;
     color: #2C3E50;
- # color: white;
 }
+
 section.odd {
    background: white;
    color: #2C3E50; 
 }
+
+section.gray {
+    background: gray;
+    color: #2C3E50; 
+}
+
 
 footer a,
 footer a:hover,
@@ -481,6 +487,3 @@ div#maincontent {
 }
 
 
-.gray {
-        color: gray;
-}
