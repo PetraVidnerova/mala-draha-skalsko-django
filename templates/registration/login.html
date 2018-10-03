@@ -4,15 +4,14 @@
 
 <section class="success"> <br>
 {% if form.errors %}
-  <p>Your username and password didn't match. Please try again.</p>
+  <p>Uživatelské jméno a heslo se neshodují. Zkuste to znovu.</p>
 {% endif %}
 
 {% if next %}
   {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+    <p>Nemáte oprávnění pro přístup k této stránce.</p>
   {% else %}
-    <p>Please login to see this page.</p>
+    <p>Prosím nalogujte se.</p>
   {% endif %}
 {% endif %}
 
