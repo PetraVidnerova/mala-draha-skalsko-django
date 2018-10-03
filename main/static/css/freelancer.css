@@ -15,6 +15,12 @@ p {
 p.small {
   font-size: 16px;
 }
+
+p.content {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 ul.normal{
     font-size: 20px;
 }
@@ -219,22 +225,16 @@ section h2 {
 section.success {
     background: #DEB887;
     color: #2C3E50;
-    padding-left: 100px;
-    padding-right: 100px;
 }
 
 section.odd {
    background: white;
    color: #2C3E50; 
-   padding-left: 100px;
-   padding-right: 100px; 
 }
 
 section.gray {
     background: gray;
     color: #2C3E50;
-    padding-left: 100px;
-    padding-right: 100px;
 }
 
 
