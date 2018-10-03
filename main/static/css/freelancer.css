@@ -17,6 +17,7 @@ p.small {
 }
 
 p.content {
+    text-align: left;
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -92,9 +93,6 @@ hr.star-primary2:after {
 section {
     text-align: center;
   color: white;
-}
-section .content {
-    text-align: center;
 }
 
 section .edit {

@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<br><br>
+
+<section class="success">
+  <div class="date"> {{ post.published_date }} ({{post.author.get_full_name}}) </div>
+  <br>
+  <h2 class="content"> <a href=""> {{ post.title }} </a> </h2>
+  <p class="content"> {{ post.text|linebreaksbr }}</p>
+
+  <div>
+  <p class="content">
+    {% for photo in post.image_set.all %}<img src="{{ photo.image.url }}" width="150" style="float: left"/>{% endfor %}
+  </p>
+  </div>
+  <div style="clear:both;"></div>
+
+  {% if user.is_authenticated %}
+  <form method="post" enctype="multipart/form-data" class="content">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+  <form method="GET" action="{% url 'aktuality' %}">
+    <button type="submit">Hotovo</button>
+  </form>
+  {% endif %}
+
+</section>
+
+{% endblock %}

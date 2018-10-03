@@ -23,9 +23,16 @@
   
       <div class="date"> {{ post.published_date }} ({{post.author.get_full_name}}) </div>
       <br>
-      <h2 class="content"> <a href=""> {{ post.title }} </a> </h2>
+      <h2 class="content"> <a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title }} </a> </h2>
   <p class="content"> {{ post.text|linebreaksbr }}</p>
 
+  <div>
+  <p class="content">
+    {% for photo in post.image_set.all %}<img src="{{ photo.image.url }}" width="150" style="float: left"/>{% endfor %}
+  </p>
+  </div>
+  <div style="clear:both;"></div>
+  
 
 </section>
 

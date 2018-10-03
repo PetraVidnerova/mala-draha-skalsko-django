@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, ImageForm
 
 # Create your views here.
 def aktuality(request):
@@ -21,7 +21,7 @@ def post_edit(request, pk):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('aktuality')
+            return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'news/new.html', {"form": form})
@@ -34,7 +34,21 @@ def post_new(request):
             post.author = request.user
             post.date_published = timezone.now()
             post.save()
-            return redirect('aktuality')
+            return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'news/new.html', {"form": form})
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.post = post
+            image.save()
+            return redirect('post_detail', pk=post.pk)
+        else:
+            return redirect('index')
+    form = ImageForm()
+    return render(request, 'news/detail.html', {"post": post, "form": form})

@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post
+from .models import Post, Image
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -11,3 +11,9 @@ class PostForm(forms.ModelForm):
             'text': ('Text'),
             'publish': ('Publikovat?'),
         }
+
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['image']
