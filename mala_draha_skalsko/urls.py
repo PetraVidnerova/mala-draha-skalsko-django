@@ -23,7 +23,7 @@ import main.views as m_views
 urlpatterns = [
     path('login/', m_views.login, name="login"),
     path('accounts/', include('django.contrib.auth.urls')),
-    #    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n'))
 ]
 
