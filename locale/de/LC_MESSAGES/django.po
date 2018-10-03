@@ -1,0 +1,149 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-03 11:27+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: main/templates/main/base.html:55 main/templates/main/base.html:57
+#: main/templates/main/onas.html:9
+msgid "O nás"
+msgstr "Von uns"
+
+#: main/templates/main/base.html:58 main/templates/main/fotky.html:11
+msgid "Fotky a videa"
+msgstr "Fotos und videos"
+
+#: main/templates/main/base.html:59 main/templates/main/planek.html:10
+msgid "Plánek"
+msgstr "Plan"
+
+#: main/templates/main/base.html:64 main/templates/main/odkazy.html:12
+msgid "Odkazy"
+msgstr "Links"
+
+#: main/templates/main/base.html:65 main/templates/main/base.html:106
+msgid "Kontakt"
+msgstr "Kontakt"
+
+#: main/templates/main/base.html:109
+msgid "telefon"
+msgstr "telefon"
+
+#: main/templates/main/base.html:110
+msgid "tečka"
+msgstr "punkt"
+
+#: main/templates/main/base.html:110
+msgid "zavináč"
+msgstr "at"
+
+#: main/templates/main/base.html:121
+msgid "Mapa"
+msgstr "Karte"
+
+#: main/templates/main/base.html:123
+msgid "Najdete nás zde"
+msgstr "Sie finden uns hier"
+
+#: main/templates/main/fotky.html:20
+msgid "Další vlastní videa"
+msgstr "Videos"
+
+#: main/templates/main/fotky.html:24
+msgid "Fotogalerie"
+msgstr "Fotogalerie"
+
+#: main/templates/main/index.html:17
+msgid "Malá dráha Skalsko"
+msgstr ""
+
+#: main/templates/main/index.html:19
+msgid "Velká zahradní železnice 7\"¼ - Parostrojní muzeum"
+msgstr "Großgartenbahn 7\"¼ - Dampfmaschinenmuseum"
+
+#: main/templates/main/onas.html:16
+msgid ""
+"\n"
+"\t\t    Jedná se o veřejně přístupnou soukromou zahradní železnici budovanou "
+"od roku 2007.\n"
+"\t\t    "
+msgstr ""
+"\n"
+"Malá dráha Skalsko (Kleinbahn Skalsko) ist eine private öffentlich zugängliche Gartenbahn, seit 2007 im Bau. Sie ist an Wochenenden nach telefonischer Absprache geöffnet."
+
+#: main/templates/main/onas.html:23
+msgid ""
+"\n"
+"\t\t    V provozu jsou dvě parní lokomotivy, z nich jedna vlastní "
+"konstrukce, a motorová lokomotiva. Tři vagóny uvezou každý až 3 dospělé "
+"cestující nebo 4 děti.\t\t    "
+msgstr ""
+"\n"
+"Zur Zeit sind eine benzinelektrische Lokomotive und zwei Wagons für insgesamt 7 Erwachsene (10 Kinder)im Betrieb. Eigene Fahrzeuge können ebenfalls mitgebracht und auf der vorhandenen Gleisanlage betrieben werden. "
+
+#: main/templates/main/onas.html:29
+msgid ""
+"\n"
+"\t\t    Trasa dráhy je vedena v poměrně rozlehlé zahradě dvěma okruhy, malým "
+"o délce 50m, velkým o délce 350m. Na velkém okruhu je železný železniční "
+"most přes vodní nádrž.\t\t    "
+msgstr ""
+"\n"
+" "
+
+#: main/templates/main/onas.html:34
+msgid ""
+"\n"
+"\t\t    V muzeu jsou k vidění různé typy modelových i skutečných parních "
+"strojů, stabilních motorů, a dva historické traktory.\n"
+"\t\t    "
+msgstr ""
+"\n"
+"Verschiedene Arten von historischen und Modelldampfmaschinen sind im Museum zu sehen."
+
+
+#: main/templates/main/onas.html:41
+msgid "Technické údaje"
+msgstr "Technische Daten"
+
+#: main/templates/main/onas.html:43
+msgid "rozchod"
+msgstr "Spurweite"
+
+#: main/templates/main/onas.html:43
+msgid "podle"
+msgstr "nach"
+
+#: main/templates/main/onas.html:44
+msgid "celková délka kolejí"
+msgstr "Streckenlänge gesamt"
+
+#: main/templates/main/onas.html:44
+msgid "červenec"
+msgstr "Juli"
+
+#: main/templates/main/onas.html:45
+msgid "poloměry oblouků: 6m na malém okruhu, 9 a 12m na velkém"
+msgstr "Bogenradius: kurze Strecke 6m, lange Strecke mindestens 9 und 12m"
+
+#: main/templates/main/onas.html:47
+msgid "maximální stoupání: 17‰ proti směru hodinových ručiček, 10‰ po směru"
+msgstr "Maximale Steigung: 17‰ gegen den Uhrzeigersinn, 10‰ im Uhrzeigersinn"
+
+#: main/templates/main/planek.html:13
+msgid "červeně: úseky v provozu, černě: úseky plánované a ve stavbě"
+msgstr "rot: Abschnitte in Betrieb, schwarz: Abschnitte geplant und im Bau "
