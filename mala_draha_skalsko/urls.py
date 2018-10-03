@@ -29,5 +29,5 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', include('main.urls')),
-    path('aktuality', include('news.urls')),
+    path('aktuality/', include('news.urls')),
 )
