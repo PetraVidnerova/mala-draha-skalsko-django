@@ -1,4 +1,7 @@
 {% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,26 +42,27 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span></a>
+                <a class="navbar-brand" href="{% url 'index' %}"><span class="glyphicon glyphicon-home"></span></a>
             </div>
 	    
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
+		{% if LANGUAGE_CODE == "cs" %}
 		<li class="hidable"><a href="{% url 'aktuality' %}">Aktuality</a></li>
-
+		{% endif %}
 		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">O nás<span class="caret"></span></a>
+		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "O nás" %}<span class="caret"></span></a>
 		  <ul class="dropdown-menu">
-		    <li class="hidable"><a href="{% url 'onas' %}">O nás</a></li>
-		    <li class="hidable"><a href="{% url 'fotky' %}">Fotky a videa</a></li>
-		    <li class="hidable"><a href="{% url 'planek'%}">Plánek</a></li>
+		    <li class="hidable"><a href="{% url 'onas' %}">{% trans "O nás" %}</a></li>
+		    <li class="hidable"><a href="{% url 'fotky' %}">{% trans "Fotky a videa" %}</a></li>
+		    <li class="hidable"><a href="{% url 'planek'%}">{% trans "Plánek" %}</a></li>
 		  </ul>
 		</li>
 
 
-		<li class="hidable"><a href="{% url 'odkazy'%}">Odkazy</a></li>
-		<li class="hidable"><a href="#kontakt">Kontakt</a></li>
+		<li class="hidable"><a href="{% url 'odkazy'%}">{% trans "Odkazy" %}</a></li>
+		<li class="hidable"><a href="#kontakt">{% trans "Kontakt" %}</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 		{% if user.is_authenticated %}
@@ -69,15 +73,17 @@
 		  </ul>
 		</li>
 		{% endif %}
-                    <li class="hidable">
-                        <a href="">Česky</a>
-                    </li>
-                    <li class="hidable">
-                        <a href="">English</a>
-                    </li>
-                    <li class="hidable">
-                        <a href="">Deutsch</a>
-                    </li>
+		{% get_language_info_list for LANGUAGES as languages %}
+		{% for language in languages %}
+		<li class="hidable">
+		    <form id="language_{{language.code}}" action="/i18n/setlang/" method="post" style="display: none">
+		      {% csrf_token %}
+		      <input type="hidden" name="next" value="{{redirect_to}}"/>
+		      <input type="hidden" name="language" value="{{language.code}}">
+		    </form>
+                        <a href="" onclick="$('#language_{{language.code}}').submit(); return false;">{{language.name_local}}</a>
+                </li>
+		{% endfor %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -97,11 +103,11 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col col-md-6">
-                        <h3>Kontakt</h3>
+                        <h3>{% trans "Kontakt" %}</h3>
                         <p>
 			  Petr Vidner, Skalsko 20, okr. Mladá Boleslav <br>
-			  telefon: +420 608 818 990 <br>
-			  e-mail: petr tečka vidner zavináč seznam tečka cz
+			  {% trans "telefon" %}: +420 608 818 990 <br>
+			  e-mail: petr {% trans "tečka" %} vidner {% trans "zavináč" %} seznam {% trans "tečka" %} cz
 			</p>
                     </div>
                     <div class="footer-col col-md-1">
@@ -112,9 +118,9 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Mapa</h3>
+                        <h3>{% trans "Mapa" %}</h3>
                         <p>
-			  <a href="http://www.mapy.cz/#x=133845616@y=137152256@z=16@mm=ZP@ax=133845392@ay=137153056@at=Mal%C3%A1%20dr%C3%A1ha%20Skalsko@ad=Velk%C3%A1%20zahradn%C3%AD%20%C5%BEeleznice%207%22%C2%BC%20a%20parostrojn%C3%AD%20muzeum">Najdete nás zde</a>
+			  <a href="http://www.mapy.cz/#x=133845616@y=137152256@z=16@mm=ZP@ax=133845392@ay=137153056@at=Mal%C3%A1%20dr%C3%A1ha%20Skalsko@ad=Velk%C3%A1%20zahradn%C3%AD%20%C5%BEeleznice%207%22%C2%BC%20a%20parostrojn%C3%AD%20muzeum">{% trans "Najdete nás zde" %}</a>
 			</p>
                     </div>
                 </div>

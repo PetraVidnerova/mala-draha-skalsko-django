@@ -1,5 +1,7 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
     <!-- Header -->
@@ -12,9 +14,9 @@
 		<!-- </div>
 		<div class="col-lg-6"> -->
                     <div class="intro-text">
-                        <h1 class="name">Malá dráha Skalsko</h1>
+                      <h1 class="name">{% trans "Malá dráha Skalsko" %}</h1>
                         <!--<hr class="star-primary2">-->
-                        <p class="skills">Velká zahradní železnice 7"¼ - Parostrojní muzeum </p>
+                        <p class="skills">{% trans 'Velká zahradní železnice 7"¼ - Parostrojní muzeum' %} </p>
                     </div>
                 </div>
             <!--</div>-->
@@ -25,7 +27,13 @@
 		<a class="btn btn-default" href="{% url 'edit' %}"><span class="glyphicon glyphicon-pencil"></span></a>
 		{% endif %}
 		<p>
+		  {% if LANGUAGE_CODE == "cs" %}
 		  {{ message.text|linebreaksbr }}
+		  {% elif LANGUAGE_CODE == "en" %}
+		  {{ message.text_en|linebreaksbr }}
+		  {% elif LANGUAGE_CODE == "de" %}
+		  {{ message.text_de|linebreaksbr }}
+		  {% endif %}
 		</p>
 	      </div>
 	    </div>
