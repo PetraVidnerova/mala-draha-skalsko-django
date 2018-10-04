@@ -1,6 +1,8 @@
 import os
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from django.forms import formset_factory
 
 from .models import Post, Image
 from .forms import PostForm, ImageForm
@@ -13,6 +15,7 @@ def aktuality(request):
         posts = Post.objects.filter(publish=True).order_by('-published_date')
     return render(request, 'news/aktuality.html', {"posts": posts})
 
+"""
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -26,7 +29,40 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'news/new.html', {"form": form})
+"""
 
+@login_required
+def post_edit(request, pk):
+
+    ImageFormSet = formset_factory(ImageForm, extra=3)
+    
+    post = get_object_or_404(Post, pk=pk)
+
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        formset = ImageFormSet(request.POST, request.FILES)
+        if form.is_valid() and formset.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+
+            for form in formset.cleaned_data:
+                if 'image' in form:
+                    image = form['image']
+                    photo = Image(post=post, image=image)
+                    photo.save()
+
+            return redirect('post_detail', pk=post.pk)
+        
+    else:
+        form = PostForm(instance=post)
+        formset = ImageFormSet()
+        
+    return render(request, 'news/new.html', {"form": form, "formset": formset})
+    
+
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)

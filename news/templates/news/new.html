@@ -4,9 +4,32 @@
 <br><br>
 <section class="success">
 <h1>Nový příspěvek</h1>
-     <form method="POST" class="post-form">{% csrf_token %}
+
+<!--
+    <form method="POST" class="post-form">{% csrf_token %}
          {{ form.as_p }}
          <button type="submit" class="save btn btn-default">Ulož</button>
      </form>
+-->
+    <form id="post_form" method="post" action="" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    {% for field in form %}
+        {{ field }} <br />
+    {% endfor %}
+
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form }} <br/>
+    {% endfor %}
+
+
+    <input type="submit" name="submit" value="Submit" />
+</form>
+
 </section>
 {% endblock%}
