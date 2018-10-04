@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'mala_draha_skalsko.force_default_language_middleware.force_default_language_middleware',
 ]
 
 ROOT_URLCONF = 'mala_draha_skalsko.urls'
