@@ -28,7 +28,7 @@
 
   <div>
   <p class="content">
-    {% for photo in post.image_set.all %}<img src="{{ photo.image.url }}" width="150" style="float: left"/>{% endfor %}
+    {% for photo in post.image_set.all %}<a href="{{ photo.image.url }}"><img src="{{ photo.image.url }}" width="150" style="float: left"/></a>{% endfor %}
   </p>
   </div>
   <div style="clear:both;"></div>

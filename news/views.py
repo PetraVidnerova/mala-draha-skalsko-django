@@ -1,7 +1,8 @@
+import os
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
-from .models import Post
+from .models import Post, Image
 from .forms import PostForm, ImageForm
 
 # Create your views here.
@@ -52,3 +53,12 @@ def post_detail(request, pk):
             return redirect('index')
     form = ImageForm()
     return render(request, 'news/detail.html', {"post": post, "form": form})
+
+def delete_image(request, pk):
+    image = get_object_or_404(Image, pk=pk)
+    post_pk = image.post.pk
+    filename = image.image.path
+    image.delete()
+    if os.path.isfile(filename):
+        os.remove(filename)
+    return redirect('post_detail', pk=post_pk)
