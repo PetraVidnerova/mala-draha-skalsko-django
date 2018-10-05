@@ -21,7 +21,7 @@ msgstr ""
 #: main/templates/main/base.html:55 main/templates/main/base.html:57
 #: main/templates/main/onas.html:9
 msgid "O nás"
-msgstr "Von uns"
+msgstr "Über uns"
 
 #: main/templates/main/base.html:58 main/templates/main/fotky.html:11
 msgid "Fotky a videa"
