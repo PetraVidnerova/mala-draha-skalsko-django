@@ -4,6 +4,11 @@
 <br><br>
 
 <section class="success">
+
+    {% if user.is_authenticated %}
+      <a class="edit" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"> </span> Editovat příspěvek.</a>
+   {% endif %}
+
   <div class="date"> {{ post.published_date }} ({{post.author.get_full_name}}) </div>
   <br>
   <h2 class="content"> <a href=""> {{ post.title }} </a> </h2>
@@ -12,9 +17,9 @@
   <p class="content">
     {% for photo in post.image_set.all %}
     <a href="{{ photo.image.url }}">
-    <img src="{{ photo.image.url }}" width="150" style="float: left; padding-bottom: 150px;"/></a>
+    <img src="{{ photo.image.url }}" width="150" style="float: left; padding-bottom: 10px;"/></a>
     {% if user.is_authenticated %}
-    <a href="{% url 'delete_image' pk=photo.pk %}" style="float: left">
+    <a href="{% url 'delete_image' pk=photo.pk redir='post_detail'%}" style="float: left">
      <span class="glyphicon glyphicon-remove" style="margin-right: 10px;"> </span>
     </a>
     {% endif %}

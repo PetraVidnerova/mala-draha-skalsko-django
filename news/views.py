@@ -15,21 +15,6 @@ def aktuality(request):
         posts = Post.objects.filter(publish=True).order_by('-published_date')
     return render(request, 'news/aktuality.html', {"posts": posts})
 
-"""
-def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'news/new.html', {"form": form})
-"""
 
 @login_required
 def post_edit(request, pk):
@@ -53,29 +38,44 @@ def post_edit(request, pk):
                     photo = Image(post=post, image=image)
                     photo.save()
 
-            return redirect('post_detail', pk=post.pk)
+            return redirect('aktuality')
         
     else:
         form = PostForm(instance=post)
         formset = ImageFormSet()
         
-    return render(request, 'news/new.html', {"form": form, "formset": formset})
+    return render(request, 'news/new.html', {"form": form, "formset": formset, "post": post})
     
 
 @login_required
 def post_new(request):
+
+    ImageFormSet = formset_factory(ImageForm, extra=3)
+
     if request.method == "POST":
         form = PostForm(request.POST)
-        if form.is_valid():
+        formset = ImageFormSet(request.POST, request.FILES)
+        if form.is_valid() and formset.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.date_published = timezone.now()
+            post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+
+            for form in formset.cleaned_data:
+                if 'image' in form:
+                    image = form['image']
+                    photo = Image(post=post, image=image)
+                    photo.save()
+
+            return redirect('aktuality')
+        
     else:
         form = PostForm()
-    return render(request, 'news/new.html', {"form": form})
-
+        formset = ImageFormSet()
+        
+    return render(request, 'news/new.html', {"form": form, "formset": formset})
+  
+  
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -90,11 +90,11 @@ def post_detail(request, pk):
     form = ImageForm()
     return render(request, 'news/detail.html', {"post": post, "form": form})
 
-def delete_image(request, pk):
+def delete_image(request, pk, redir):
     image = get_object_or_404(Image, pk=pk)
     post_pk = image.post.pk
     filename = image.image.path
     image.delete()
     if os.path.isfile(filename):
         os.remove(filename)
-    return redirect('post_detail', pk=post_pk)
+    return redirect(redir, pk=post_pk)
